@@ -1,6 +1,7 @@
 package com.charlesdrews.usabilitytestinglab;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -49,7 +50,15 @@ public class DetailFragment extends Fragment {
         return view;
     }
 
+
     public void updateWebView(String selectedSign) {
         //TODO - look up how to load a URL in a webview
+        mWebView.loadUrl(URL_BEGINNING + selectedSign);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
     }
 }

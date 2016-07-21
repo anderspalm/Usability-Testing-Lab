@@ -17,12 +17,18 @@ public class DetailActivity extends AppCompatActivity {
 
         String selectedSign = getIntent().getStringExtra(SIGN_KEY);
 
+        mDetailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detail_fragment);
+
+
+
         // if the sign was not added to the intent, getStringExtra() would return null
         if (selectedSign != null) {
+            // the following is to send us to a new url
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + selectedSign));
+//            startActivity(intent);
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + selectedSign));
-            startActivity(intent);
 
+            mDetailFragment.updateWebView(selectedSign);
             //TODO rather than launch the link externally in the broswer, launch in the detail fragment's webview
             //TODO - (hint: you'll need to get a reference to the detail fragment that's loaded in this activity)
         }
